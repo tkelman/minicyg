@@ -25,16 +25,17 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
   cd /usr/src/coreutils-* && \\
   sed -i 's/CYGCONF_ARGS=\`"/CYGCONF_ARGS=\`"--disable-nls /' coreutils.cygport && \\
   cygport coreutils.cygport all 2>&1 && cygcheck coreutils-*/inst/usr/bin/stty.exe && \\
-  mkdir -p /usr/src/minicyg/bin && \\
-  cp /bin/cygwin1.dll /bin/mintty.exe /bin/dash.exe /usr/src/minicyg/bin && \\
-  cp /usr/src/sbase/*.exe /usr/src/libsixel/converters/img2sixel.exe /usr/src/minicyg/bin && \\
-  cp /usr/src/coreutils-*/coreutils-*/inst/usr/bin/stty.exe /usr/src/minicyg/bin && \\
+  mkdir -p -v /usr/src/minicyg/bin && \\
+  cp -v /bin/cygwin1.dll /bin/mintty.exe /bin/dash.exe /usr/src/minicyg/bin && \\
+  cp -v /usr/src/sbase/*.exe /usr/src/minicyg/bin && \\
+  cp -v /usr/src/libsixel/converters/img2sixel.exe /usr/src/minicyg/bin && \\
+  cp -v /usr/src/coreutils-*/coreutils-*/inst/usr/bin/stty.exe /usr/src/minicyg/bin && \\
   for i in Cygwin mintty dash coreutils; do \\
-    mkdir -p /usr/src/minicyg/share/doc/$i && \\
-    cp /usr/share/doc/$i/COPYING /usr/src/minicyg/share/doc/$i && \\
-    cp /usr/share/doc/$i/*LICENSE* /usr/src/minicyg/share/doc/$i; \\
+    mkdir -p -v /usr/src/minicyg/share/doc/`$i && \\
+    cp -v /usr/share/doc/`$i/COPYING /usr/src/minicyg/share/doc/`$i && \\
+    cp -v /usr/share/doc/`$i/*LICENSE* /usr/src/minicyg/share/doc/`$i; \\
   done && \\
   for i in sbase libsixel; do \\
-    mkdir -p /usr/src/minicyg/share/doc/$i && \\
-    cp /usr/src/$i/LICENSE* /usr/src/minicyg/share/doc/$i; \\
+    mkdir -p -v /usr/src/minicyg/share/doc/`$i && \\
+    cp -v /usr/src/`$i/LICENSE* /usr/src/minicyg/share/doc/`$i; \\
   done && echo ok"
