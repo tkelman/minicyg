@@ -6,7 +6,7 @@ notifications:
 
 build_script:
   - ps: ./build.ps1
-  - cp C:\cygbuild64\usr\src\minicyg-*.zip C:\projects\minicyg
+  - ps: cp C:\cygbuild64\usr\src\minicyg-*.zip C:\projects\minicyg
 
 cache:
   - C:\cygdl64
