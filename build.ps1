@@ -21,5 +21,5 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
 & "C:\\cygbuild$bits\\bin\\sh" -lc "git clone git://git.suckless.org/sbase && \\
   cd sbase && make -j3 && git clone https://github.com/saitoha/libsixel ../libsixel && \\
   cd ../libsixel && ./configure && make -j3 && cd /usr/src/coreutils-* && \\
-  sed -i 's/CYGCONF_ARGS="/CYGCONF_ARGS="--disable-nls /' coreutils.cygport && \\
+  sed -i 's/CYGCONF_ARGS=\"/CYGCONF_ARGS=\"--disable-nls /' coreutils.cygport && \\
   cygport coreutils.cygport all && echo ok"
