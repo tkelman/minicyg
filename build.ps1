@@ -19,9 +19,9 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
   -s http://mirrors.mit.edu/cygwin -g -P "git,cygport,gnupg" | Where-Object `
   -FilterScript {$_ -notlike "Installing file *"} | Write-Output
 & "C:\\cygbuild$bits\\bin\\sh" -lc "git clone git://git.suckless.org/sbase /usr/src/sbase 2>&1 && \\
-  cd /usr/src/sbase && git checkout 9ab1478f1eb && make -j3 && \\
+  cd /usr/src/sbase && git checkout 9ab1478f1eb 2>&1 && make -j3 && \\
   git clone https://github.com/saitoha/libsixel /usr/src/libsixel 2>&1 && \\
-  cd /usr/src/libsixel && git checkout 8c376f5ad03 && ./configure && make -j3 && \\
+  cd /usr/src/libsixel && git checkout 8c376f5ad03 2>&1 && ./configure && make -j3 && \\
   cd /usr/src/coreutils-* && \\
   sed -i 's/CYGCONF_ARGS=\`"/CYGCONF_ARGS=\`"--disable-nls /' coreutils.cygport && \\
   cygport coreutils.cygport all 2>&1 && cygcheck coreutils-*/inst/usr/bin/stty.exe && \\
