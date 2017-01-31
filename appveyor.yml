@@ -5,4 +5,4 @@ notifications:
     on_build_status_changed: false
 
 build_script:
-  - build.ps1
+  - ps: ./build.ps1
