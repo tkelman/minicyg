@@ -13,10 +13,10 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
 # download sources (-I) for coreutils and make
 # (maybe apt-cyg could be used to avoid downloading -src for the entire base system?)
 & "C:\\cygbuild$bits\\$setup" -q -n -R C:\\cygbuild$bits -l C:\\cygbuild$bits\\packages `
-  -s http://mirrors.mit.edu/cygwin -g -I -P "coreutils,make,gnupg" | Where-Object `
+  -s http://mirrors.mit.edu/cygwin -g -I -P "coreutils,make" | Where-Object `
   -FilterScript {$_ -notlike "Installing file *"} | Write-Output
 & "C:\\cygbuild$bits\\$setup" -q -n -R C:\\cygbuild$bits -l C:\\cygbuild$bits\\packages `
-  -s http://mirrors.mit.edu/cygwin -g -P "git,cygport" | Where-Object `
+  -s http://mirrors.mit.edu/cygwin -g -P "git,cygport,gnupg" | Where-Object `
   -FilterScript {$_ -notlike "Installing file *"} | Write-Output
 & "C:\\cygbuild$bits\\bin\\sh" -lc "git clone git://git.suckless.org/sbase /usr/src/sbase 2>&1 && \\
   cd /usr/src/sbase && git checkout 9ab1478f1eb && make -j3 && \\
