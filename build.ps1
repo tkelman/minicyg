@@ -18,24 +18,23 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
 & "C:\\cygbuild$bits\\$setup" -q -n -R C:\\cygbuild$bits -l C:\\cygdl$bits `
   -s http://mirrors.mit.edu/cygwin -g -P "git,cygport,gnupg,p7zip" | Where-Object `
   -FilterScript {$_ -notlike "Installing file *"} | Write-Output
-& "C:\\cygbuild$bits\\$setup" -q -n -R C:\\cygbuild$bits -l C:\\cygdl$bits `
-  -s http://mirrors.mit.edu/cygwin -g -P "gettext-devel,pkg-config" | Where-Object `
-  -FilterScript {$_ -notlike "Installing file *"} | Write-Output
+#& "C:\\cygbuild$bits\\$setup" -q -n -R C:\\cygbuild$bits -l C:\\cygdl$bits `
+#  -s http://mirrors.mit.edu/cygwin -g -P "gettext-devel,pkg-config" | Where-Object `
+#  -FilterScript {$_ -notlike "Installing file *"} | Write-Output
 & "C:\\cygbuild$bits\\bin\\sh" -lc "git clone git://git.suckless.org/sbase /usr/share/doc/sbase 2>&1 && \\
   cd /usr/share/doc/sbase && git checkout 9ab1478f1eb 2>&1 && make -j3 && \\
   git clone https://github.com/saitoha/libsixel /usr/share/doc/libsixel 2>&1 && \\
   cd /usr/share/doc/libsixel && git checkout 8c376f5ad03 2>&1 && ./configure && make -j3 && \\
   echo 'enable_nls=no' >> /usr/share/config.site && cd /usr/src/coreutils-* && \\
   cygport coreutils.cygport all 2>&1 && cygcheck coreutils-*/inst/usr/bin/stty.exe && \\
-  cd /usr/src/make-* && cygport make.cygport all && cygcheck make-*/inst/usr/bin/make.exe && \\
   mkdir -p -v /usr/src/minicyg/bin && \\
   cp -v /bin/cygwin1.dll /bin/mintty.exe /usr/src/minicyg/bin && \\
+  cp -v /bin/cygwin-console-helper.exe /usr/src/minicyg/bin && \\
   cp -v /bin/dash.exe /usr/src/minicyg/bin/sh.exe && \\
   cp -v /usr/share/doc/sbase/*.exe /usr/src/minicyg/bin && \\
   cp -v /usr/share/doc/libsixel/converters/img2sixel.exe /usr/src/minicyg/bin && \\
   cp -v /usr/src/coreutils-*/coreutils-*/inst/usr/bin/stty.exe /usr/src/minicyg/bin && \\
-  cp -v /usr/src/make-*/make-*/inst/usr/bin/make.exe /usr/src/minicyg/bin && \\
-  for i in Cygwin mintty dash coreutils make; do \\
+  for i in Cygwin mintty dash coreutils; do \\
     mkdir -p -v /usr/src/minicyg/share/doc/`$i && \\
     cp -v /usr/share/doc/`$i/COPYING /usr/src/minicyg/share/doc/`$i; \\
   done && \\
@@ -44,3 +43,6 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
     cp -v /usr/share/doc/`$i/*LICENSE* /usr/src/minicyg/share/doc/`$i; \\
   done && \\
   cd /usr/src && 7z a minicyg-`$APPVEYOR_BUILD_NUMBER.zip minicyg && echo ok"
+
+#  cd /usr/src/make-* && cygport make.cygport all && cygcheck make-*/inst/usr/bin/make.exe && \\
+#  cp -v /usr/src/make-*/make-*/inst/usr/bin/make.exe /usr/src/minicyg/bin && \\
