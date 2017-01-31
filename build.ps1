@@ -18,17 +18,17 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
 & "C:\\cygbuild$bits\\$setup" -q -n -R C:\\cygbuild$bits -l C:\\cygbuild$bits\\packages `
   -s http://mirrors.mit.edu/cygwin -g -P "git,cygport" | Where-Object `
   -FilterScript {$_ -notlike "Installing file *"} | Write-Output
-& "C:\\cygbuild$bits\\bin\\sh" -lc "git clone git://git.suckless.org/sbase /usr/src/sbase && \\
+& "C:\\cygbuild$bits\\bin\\sh" -lc "git clone git://git.suckless.org/sbase /usr/src/sbase 2>&1 && \\
   cd /usr/src/sbase && git checkout 9ab1478f1eb && make -j3 && \\
-  git clone https://github.com/saitoha/libsixel /usr/src/libsixel && \\
+  git clone https://github.com/saitoha/libsixel /usr/src/libsixel 2>&1 && \\
   cd /usr/src/libsixel && git checkout 8c376f5ad03 && ./configure && make -j3 && \\
   cd /usr/src/coreutils-* && \\
   sed -i 's/CYGCONF_ARGS=\`"/CYGCONF_ARGS=\`"--disable-nls /' coreutils.cygport && \\
-  cygport coreutils.cygport all && cygcheck coreutils-*/inst/usr/bin/stty.exe && \\
-  cygcheck /usr/bin/stty.exe && mkdir -p /usr/src/minicyg/bin && \\
+  cygport coreutils.cygport all 2>&1 && cygcheck coreutils-*/inst/usr/bin/stty.exe && \\
+  mkdir -p /usr/src/minicyg/bin && \\
   cp /bin/cygwin1.dll /bin/mintty.exe /bin/dash.exe /usr/src/minicyg/bin && \\
   cp /usr/src/sbase/*.exe /usr/src/libsixel/converters/img2sixel.exe /usr/src/minicyg/bin && \\
-  cp /usr/src/coreutils-*/inst/usr/bin/stty.exe /usr/src/minicyg/bin && \\
+  cp /usr/src/coreutils-*/coreutils-*/inst/usr/bin/stty.exe /usr/src/minicyg/bin && \\
   for i in Cygwin mintty dash coreutils; do \\
     mkdir -p /usr/src/minicyg/share/doc/$i && \\
     cp /usr/share/doc/$i/COPYING /usr/src/minicyg/share/doc/$i && \\
