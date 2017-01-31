@@ -32,7 +32,7 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
   cp -v /usr/src/coreutils-*/coreutils-*/inst/usr/bin/stty.exe /usr/src/minicyg/bin && \\
   for i in Cygwin mintty dash coreutils; do \\
     mkdir -p -v /usr/src/minicyg/share/doc/`$i && \\
-    cp -v /usr/share/doc/`$i/COPYING /usr/src/minicyg/share/doc/`$i && \\
+    cp -v /usr/share/doc/`$i/COPYING /usr/src/minicyg/share/doc/`$i; \\
   done && \\
   for i in Cygwin mintty sbase libsixel; do \\
     mkdir -p -v /usr/src/minicyg/share/doc/`$i && \\
