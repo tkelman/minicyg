@@ -26,7 +26,8 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
   sed -i 's/CYGCONF_ARGS=\`"/CYGCONF_ARGS=\`"--disable-nls /' coreutils.cygport && \\
   cygport coreutils.cygport all 2>&1 && cygcheck coreutils-*/inst/usr/bin/stty.exe && \\
   mkdir -p -v /usr/src/minicyg/bin && \\
-  cp -v /bin/cygwin1.dll /bin/mintty.exe /bin/dash.exe /usr/src/minicyg/bin && \\
+  cp -v /bin/cygwin1.dll /bin/mintty.exe /usr/src/minicyg/bin && \\
+  cp -v /bin/dash.exe /usr/src/minicyg/bin/sh.exe && \\
   cp -v /usr/share/doc/sbase/*.exe /usr/src/minicyg/bin && \\
   cp -v /usr/share/doc/libsixel/converters/img2sixel.exe /usr/src/minicyg/bin && \\
   cp -v /usr/src/coreutils-*/coreutils-*/inst/usr/bin/stty.exe /usr/src/minicyg/bin && \\
