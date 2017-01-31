@@ -39,4 +39,4 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
     mkdir -p -v /usr/src/minicyg/share/doc/`$i && \\
     cp -v /usr/share/doc/`$i/*LICENSE* /usr/src/minicyg/share/doc/`$i; \\
   done && \\
-  cd /usr/src && 7z a minicyg-$APPVEYOR_BUILD_NUMBER.zip minicyg && echo ok"
+  cd /usr/src && 7z a minicyg-`$APPVEYOR_BUILD_NUMBER.zip minicyg && echo ok"
