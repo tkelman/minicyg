@@ -32,9 +32,9 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
   for i in Cygwin mintty dash coreutils; do \\
     mkdir -p /usr/src/minicyg/share/doc/$i && \\
     cp /usr/share/doc/$i/COPYING /usr/src/minicyg/share/doc/$i && \\
-    cp /usr/share/doc/$i/*LICENSE* /usr/src/minicyg/share/doc/$i \\
+    cp /usr/share/doc/$i/*LICENSE* /usr/src/minicyg/share/doc/$i; \\
   done && \\
   for i in sbase libsixel; do \\
     mkdir -p /usr/src/minicyg/share/doc/$i && \\
-    cp /usr/src/$i/LICENSE* /usr/src/minicyg/share/doc/$i \\
+    cp /usr/src/$i/LICENSE* /usr/src/minicyg/share/doc/$i; \\
   done && echo ok"
