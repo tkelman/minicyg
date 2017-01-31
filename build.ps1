@@ -16,7 +16,7 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
   -s http://mirrors.mit.edu/cygwin -g -I -P "coreutils,make" | Where-Object `
   -FilterScript {$_ -notlike "Installing file *"} | Write-Output
 & "C:\\cygbuild$bits\\$setup" -q -n -R C:\\cygbuild$bits -l C:\\cygbuild$bits\\packages `
-  -s http://mirrors.mit.edu/cygwin -g -P "git,cygport,gnupg" | Where-Object `
+  -s http://mirrors.mit.edu/cygwin -g -P "git,cygport,gnupg,p7zip" | Where-Object `
   -FilterScript {$_ -notlike "Installing file *"} | Write-Output
 & "C:\\cygbuild$bits\\bin\\sh" -lc "git clone git://git.suckless.org/sbase /usr/share/doc/sbase 2>&1 && \\
   cd /usr/share/doc/sbase && git checkout 9ab1478f1eb 2>&1 && make -j3 && \\
@@ -37,4 +37,5 @@ mkdir -Force C:\\cygbuild$bits | Out-Null
   for i in Cygwin mintty sbase libsixel; do \\
     mkdir -p -v /usr/src/minicyg/share/doc/`$i && \\
     cp -v /usr/share/doc/`$i/*LICENSE* /usr/src/minicyg/share/doc/`$i; \\
-  done && echo ok"
+  done && \\
+  cd /usr/src && 7z a minicyg-$APPVEYOR_BUILD_NUMBER.zip minicyg && echo ok"

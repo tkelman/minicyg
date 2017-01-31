@@ -6,3 +6,6 @@ notifications:
 
 build_script:
   - ps: ./build.ps1
+
+artifacts:
+  - path: 'C:\cygbuild64\usr\src\minicyg-*.zip'
