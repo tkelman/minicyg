@@ -7,5 +7,8 @@ notifications:
 build_script:
   - ps: ./build.ps1
 
+cache:
+  - C:\cygdl64
+
 artifacts:
   - path: '..\..\cygbuild64\usr\src\minicyg-*.zip'
