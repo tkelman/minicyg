@@ -1,7 +1,7 @@
 # minicyg
 Minimalist repackaged subset of Cygwin. This currently contains:
   - `cygwin1.dll` the core POSIX emulation layer used by Cygwin and MSYS2, [LGPLv3 licensed](https://cygwin.com/licensing.html)
-  - `cygwin-console-helper.exe` suppresses extra console popups, [LGPLv3 licensed](https://cygwin.com/licensing.html)
+  - `cygwin-console-helper.exe` suppresses extra console popups, [GPLv3+ licensed](https://github.com/mirror/newlib-cygwin/blob/master/winsup/CYGWIN_LICENSE)
   - `mintty.exe` a lightweight terminal emulator, [GPLv3 licensed](https://github.com/mintty/mintty/blob/master/LICENSE)
   - `dash.exe` a small POSIX shell, [BSD-3 licensed (mostly)](http://git.kernel.org/cgit/utils/dash/dash.git/tree/COPYING)
   - the suckless sbase coreutils implementation, [MIT licensed](http://git.suckless.org/sbase/tree/LICENSE)
